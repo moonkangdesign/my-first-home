@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work | Moonjung Kang</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&family=Oswald:wght@500;700&family=Playfair+Display:ital,wght@1,500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <!-- Background blobs -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+
+    <!-- Left side bar -->
+    <aside class="sidebar">
+      <a href="index.html">Home</a>
+      <span class="line"></span>
+      <a href="about.html">About</a>
+      <span class="line"></span>
+      <a href="work.html" class="active">Work</a>
+      <span class="line"></span>
+      <a href="#">Contact</a>
+    </aside>
+
+    <!-- Top bar -->
+    <header>
+      <a href="index.html" class="logo">MOON KANG</a>
+      <nav>
+        <a href="about.html">About</a>
+        <a href="work.html" class="active">Work</a>
+        <a href="#">Contact</a>
+      </nav>
+    </header>
+
+    <main class="page">
+
+      <!-- Page title -->
+      <section class="work-head">
+        <p class="eyebrow">Selected Projects</p>
+        <h1>
+          <span class="outline">My</span>
+          <span class="solid">Work<span class="amp">.</span></span>
+        </h1>
+        <p>A collection of projects where design and technology meet.</p>
+      </section>
+
+      <!-- Filter buttons: data-filter matches each project's data-category -->
+      <div class="filters">
+        <button class="active" data-filter="all">All</button>
+        <button data-filter="design">Design</button>
+        <button data-filter="tech">Technology</button>
+        <button data-filter="ai">AI</button>
+      </div>
+
+      <!--
+        Project cards.
+        To use a real picture, replace the text inside .thumb with:
+          <img src="images/your-picture.jpg" alt="...">
+      -->
+      <section class="projects">
+
+        <a href="#" class="project" data-category="design">
+          <div class="thumb t1">01</div>
+          <div class="project-info">
+            <span class="tag">Brand Identity</span>
+            <h3>Project Title One</h3>
+            <p>One or two sentences about the project and your role in it.</p>
+          </div>
+        </a>
+
+        <a href="#" class="project" data-category="tech">
+          <div class="thumb t2">02</div>
+          <div class="project-info">
+            <span class="tag">Web Development</span>
+            <h3>Project Title Two</h3>
+            <p>One or two sentences about the project and your role in it.</p>
+          </div>
+        </a>
+
+        <a href="#" class="project" data-category="ai">
+          <div class="thumb t3">03</div>
+          <div class="project-info">
+            <span class="tag">AI Workshop</span>
+            <h3>Project Title Three</h3>
+            <p>One or two sentences about the project and your role in it.</p>
+          </div>
+        </a>
+
+        <a href="#" class="project" data-category="design">
+          <div class="thumb t4">04</div>
+          <div class="project-info">
+            <span class="tag">UX / UI Design</span>
+            <h3>Project Title Four</h3>
+            <p>One or two sentences about the project and your role in it.</p>
+          </div>
+        </a>
+
+        <a href="#" class="project" data-category="ai">
+          <div class="thumb t5">05</div>
+          <div class="project-info">
+            <span class="tag">Motion &amp; AI Video</span>
+            <h3>Project Title Five</h3>
+            <p>One or two sentences about the project and your role in it.</p>
+          </div>
+        </a>
+
+        <a href="#" class="project" data-category="tech">
+          <div class="thumb t6">06</div>
+          <div class="project-info">
+            <span class="tag">Digital Tool</span>
+            <h3>Project Title Six</h3>
+            <p>One or two sentences about the project and your role in it.</p>
+          </div>
+        </a>
+
+      </section>
+    </main>
+
+    <!-- Small script: show only the projects that match the clicked filter -->
+    <script>
+      const buttons = document.querySelectorAll('.filters button');
+      const projects = document.querySelectorAll('.project');
+
+      buttons.forEach(function (button) {
+        button.addEventListener('click', function () {
+          const filter = button.dataset.filter;
+
+          buttons.forEach(function (b) { b.classList.remove('active'); });
+          button.classList.add('active');
+
+          projects.forEach(function (project) {
+            const match = filter === 'all' || project.dataset.category === filter;
+            project.classList.toggle('hide', !match);
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

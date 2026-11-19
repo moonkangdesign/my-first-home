@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <!-- Page backdrop: coral-pink at the top, deep blue at the bottom -->
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e9677f"/>
+      <stop offset="0.4" stop-color="#b4589f"/>
+      <stop offset="0.72" stop-color="#5a4cc4"/>
+      <stop offset="1" stop-color="#1f45b8"/>
+    </linearGradient>
+    <radialGradient id="glowTop" cx="0.5" cy="0" r="0.65">
+      <stop offset="0" stop-color="#ff9a86" stop-opacity="0.8"/>
+      <stop offset="1" stop-color="#ff9a86" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Main mass: warm glowing core that cools to violet and blue at its edges -->
+    <radialGradient id="core" gradientUnits="userSpaceOnUse" cx="840" cy="470" r="720">
+      <stop offset="0" stop-color="#ffbe8c"/>
+      <stop offset="0.25" stop-color="#ff917f"/>
+      <stop offset="0.5" stop-color="#ee6c8a"/>
+      <stop offset="0.75" stop-color="#9b56bd"/>
+      <stop offset="1" stop-color="#3b52d6"/>
+    </radialGradient>
+    <!-- Blue folds: dark blue body that warms where it catches light -->
+    <linearGradient id="foldLeft" gradientUnits="userSpaceOnUse" x1="200" y1="700" x2="720" y2="260">
+      <stop offset="0" stop-color="#1c3fc8"/>
+      <stop offset="0.55" stop-color="#3653de"/>
+      <stop offset="1" stop-color="#8a59c4"/>
+    </linearGradient>
+    <linearGradient id="foldRight" gradientUnits="userSpaceOnUse" x1="1600" y1="500" x2="1220" y2="420">
+      <stop offset="0" stop-color="#1c3fc8"/>
+      <stop offset="0.6" stop-color="#3d55dc"/>
+      <stop offset="1" stop-color="#c062a4"/>
+    </linearGradient>
+    <linearGradient id="foldLow" gradientUnits="userSpaceOnUse" x1="760" y1="900" x2="1100" y2="700">
+      <stop offset="0" stop-color="#1a3cc0"/>
+      <stop offset="1" stop-color="#6a56d0"/>
+    </linearGradient>
+
+    <filter id="soft" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="60"/></filter>
+    <filter id="mid" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="30"/></filter>
+    <filter id="edge" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="1.5"/></filter>
+
+    <!-- Shapes: broad, rounded and full, like poured liquid -->
+    <path id="mass" d="M120 700 C200 560 360 520 470 430 C590 330 600 200 760 170 C930 140 1030 260 1120 300 C1230 350 1380 300 1480 220 C1560 160 1640 200 1620 290 C1590 420 1440 470 1350 560 C1250 660 1200 780 1040 800 C880 820 800 720 660 720 C520 720 420 820 280 830 C160 840 60 790 120 700 Z"/>
+    <path id="fLeft" d="M-40 560 C100 410 300 350 490 390 C620 420 670 520 630 630 C590 740 440 800 270 810 C110 820 -20 780 -40 700 Z"/>
+    <path id="fRight" d="M1250 420 C1380 330 1560 330 1680 390 L1680 720 C1560 790 1400 770 1320 690 C1240 610 1190 480 1250 420 Z"/>
+    <path id="fLow" d="M640 800 C760 720 1000 700 1140 740 C1270 780 1260 890 1100 920 C930 950 740 920 660 880 C610 855 600 825 640 800 Z"/>
+
+    <clipPath id="cMass"><use href="#mass"/></clipPath>
+    <clipPath id="cLeft"><use href="#fLeft"/></clipPath>
+    <clipPath id="cRight"><use href="#fRight"/></clipPath>
+    <clipPath id="cLow"><use href="#fLow"/></clipPath>
+  </defs>
+
+  <!-- backdrop -->
+  <rect width="1600" height="1000" fill="url(#sky)"/>
+  <rect width="1600" height="1000" fill="url(#glowTop)"/>
+
+  <!-- soft shadows that sit the forms in space -->
+  <g opacity="0.35" filter="url(#soft)" fill="#1a2580">
+    <use href="#mass" transform="translate(20 50)"/>
+    <use href="#fRight" transform="translate(10 40)"/>
+    <use href="#fLeft" transform="translate(10 40)"/>
+  </g>
+
+  <g filter="url(#edge)">
+    <!-- right fold (behind) -->
+    <g clip-path="url(#cRight)">
+      <rect width="1600" height="1000" fill="url(#foldRight)"/>
+      <ellipse cx="1330" cy="460" rx="130" ry="90" fill="#ff8a8a" opacity="0.5" filter="url(#mid)"/>
+      <use href="#fRight" fill="none" stroke="#14309f" stroke-width="70" opacity="0.6" filter="url(#mid)"/>
+    </g>
+
+
+    <!-- left blue fold (behind) -->
+    <g clip-path="url(#cLeft)">
+      <rect width="1600" height="1000" fill="url(#foldLeft)"/>
+      <ellipse cx="420" cy="430" rx="170" ry="80" fill="#d77bb8" opacity="0.55" filter="url(#mid)"/>
+      <use href="#fLeft" fill="none" stroke="#132e9c" stroke-width="80" opacity="0.55" filter="url(#mid)"/>
+    </g>
+
+    <!-- main glowing mass -->
+    <g clip-path="url(#cMass)">
+      <rect width="1600" height="1000" fill="url(#core)"/>
+      <ellipse cx="820" cy="420" rx="320" ry="190" fill="#ffd0a0" opacity="0.6" filter="url(#soft)"/>
+      <ellipse cx="620" cy="560" rx="220" ry="150" fill="#ff7095" opacity="0.45" filter="url(#soft)"/>
+      <ellipse cx="1300" cy="520" rx="200" ry="150" fill="#6f55cf" opacity="0.55" filter="url(#soft)"/>
+      <!-- cool rim where the form turns away from the light -->
+      <use href="#mass" fill="none" stroke="#3a4fd4" stroke-width="140" opacity="0.55" filter="url(#mid)"/>
+      <!-- broad gloss along the top -->
+      <ellipse cx="800" cy="215" rx="260" ry="55" fill="#fff4ea" opacity="0.22" filter="url(#mid)"/>
+    </g>
+  </g>
+</svg>
